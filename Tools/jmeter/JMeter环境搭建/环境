@@ -1,0 +1,9 @@
+目录结构：
+    Bin 目录 -- 修改Jmeter 配置文件，和启动
+    Lib 目录 -- 下载第三方插件（jar）使用
+    查找帮助手册 -- printable_docs目录
+
+修改语言和主题：
+    临时性改语言：启动Jmeter  -> 菜单‘options’ --> Choose Language -》 Chinese（Simplified）
+    永久：改配置文件，jmeter.properties修改 language=zh_CN保存之后重启jmeter
+    
