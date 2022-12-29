@@ -5,3 +5,4 @@
 路径
 内容编码
 参数=get方式，消息体数据-post方式或表单，文件上传=文件操作
+查看结果树的乱码：修改jmeter.properties的sampleresult.default.encoding=UTF-8
