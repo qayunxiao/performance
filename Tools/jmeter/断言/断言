@@ -1,0 +1,29 @@
+响应断言：
+    功能：对HTTP请求的任意格式的响应结果进行断言
+    位置：测试计划-线程组-HTTP请求-右键点击断言-响应断言
+
+JSON断言：
+    功能：对请求的响应时间断言
+
+JSON断言：
+    功能：对HTTP请求的响应是JSON格式的返回断言
+    配置：添写 JSON path exists;  $.weatherinfo.city
+         勾选 Addittionally assert value ，填写Expected Value ：北京
+    返回格式：{
+         	"weatherinfo": {
+         		"city": "北京",
+         		"cityid": "101010100",
+         		"temp": "27.9",
+         		"WD": "南风",
+         		"WS": "小于3级",
+         		"SD": "28%",
+         		"AP": "1002hPa",
+         		"njd": "暂无实况",
+         		"WSE": "<3",
+         		"time": "17:55",
+         		"sm": "2.1",
+         		"isRadar": "1",
+         		"Radar": "JC_RADAR_AZ9010_JB"
+         	}
+         }
+
