@@ -67,17 +67,17 @@
           <stringProp name="classname">com.forest.jmeterSampler.MyJavaRequest</stringProp>
         </JavaSampler>
         <hashTree/>
-        <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="正则表达式提取器-${addr}" enabled="true">
+        <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="正则表达式提取器-${name}" enabled="true">
           <stringProp name="TestPlan.comments">地址：&lt;/span&gt;上海市浦东新区航头镇航都路18号万香创新港&lt;/p&gt;</stringProp>
-          <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-          <stringProp name="RegexExtractor.refname">addr</stringProp>
-          <stringProp name="RegexExtractor.regex">地址：&lt;/span&gt;(.*?)&lt;/p&gt;</stringProp>
+          <stringProp name="RegexExtractor.useHeaders">unescaped</stringProp>
+          <stringProp name="RegexExtractor.refname">name</stringProp>
+          <stringProp name="RegexExtractor.regex">class=&quot;s_name&quot;&gt;(.*?)&lt;/span&gt;</stringProp>
           <stringProp name="RegexExtractor.template">$1$</stringProp>
           <stringProp name="RegexExtractor.default"></stringProp>
           <stringProp name="RegexExtractor.match_number">-1</stringProp>
         </RegexExtractor>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="false">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="LoopController.loops">3</stringProp>
         </LoopController>
@@ -129,7 +129,7 @@
           <stringProp name="RegexExtractor.match_number"></stringProp>
         </RegexExtractor>
         <hashTree/>
-        <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="Java请求-${addr}" enabled="false">
+        <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="Java请求-${name}" enabled="true">
           <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="SleepTime" elementType="Argument">
