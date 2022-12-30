@@ -1,0 +1,22 @@
+perFMon资源监控:
+    注意：在服务器端安装监控服务程序并启动
+    步骤1：下载perFmon https://github.com/undera/perfmon-agent
+    步骤2：添加监控-PerfMon Metrics Collector（监控器-jp@PerfMon Metrics Collector）
+   CPU、Memory（内存）等，一行选择一种监听项
+    步骤3：启动windows -startAgent.bat，linux-startAgent.sh
+
+Jmeter第三方插件的下载：
+    1、官网下载jar包
+    2、将包管理jar包放lib \ext目录
+    3、打开jmeter工具，打开右上角的Plugins Manager插件管理器
+        选项 - Plugins Manager插件管理器
+    4、选中Avaialble  Plugins 然后点击Apply Changes and Restart Jmeter
+
+插件：
+    Concurrency Thread Group：
+        线程数阶梯上升和图形化展示
+    图表：
+        Transactions per Sencond：TPS
+        Bytes Throughput Over Time：字节吞吐量
+        Hits per Second 点击数
+        Response Codes per Second 响应状态码
