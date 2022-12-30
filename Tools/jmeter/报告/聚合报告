@@ -1,0 +1,6 @@
+聚合报告：
+    收集性能测试结束之后系统的各项性能指标，如响应时间 并发数 吞吐量，错误率
+   位置：位置：测试计划-线程组-监听器-聚合报告
+html测试报告：
+    命令：jmeter -n -t D:\UserTools\jmeter\黑马测试\report.jmx -l res.jtl -e -o D:\UserTool
+       s\jmeter\黑马测试\report
