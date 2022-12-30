@@ -1,0 +1,5 @@
+原理：
+
+    Master                  Slaves                Target
+                         192.168.0.10
+        192.168.0.2      192.168.0.11            baidu.com
