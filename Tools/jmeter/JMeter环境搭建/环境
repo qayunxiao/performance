@@ -6,4 +6,41 @@
 修改语言和主题：
     临时性改语言：启动Jmeter  -> 菜单‘options’ --> Choose Language -》 Chinese（Simplified）
     永久：改配置文件，jmeter.properties修改 language=zh_CN保存之后重启jmeter
-    
+ 插件管理器：https://jmeter-plugins.org/install/Install/
+
+    常用插件：通过插件管理器下如下：
+    1、Transactions per Second（TPS）
+    即TPS：每秒事务数，性能测试中，最重要的2个指标之一。该插件的作用是在测试脚本执行过程中，监控查看服务器的TPS表现————比如整体趋势、实时平均值走向、稳定性等
+    安装Basic Graphs后，一共有三个插件：
+    ransactions per Second：TPS插件
+    Response Times Over Time：事务响应时间插件
+    Active Threads Over Time：每秒的活动线程数插件
+    2、Response Times Over Time（事物响应时间）
+     即*TRT：事务响应时间*，性能测试中，最重要的两个指标的另外一个。该插件的主要作用是在测试脚本执行过程中，监控查看响应时间的实时平均值、整体响应时间走向等
+
+    3、Response Times Over Time（每秒活跃线程数）
+    统计每秒活动的线程总数
+
+    性能测试之插件详解
+    @gc - Active Threads Over Timeip 活动线程时间
+    @gc - AutoStop Listener 自动停止侦听器
+    @gc - Bytes Throughput Over Timejp 字节吞吐量随时间变化
+    @gc -Composite Graph 综合图
+    @gc - Connect Times Over Timejp 连接时间
+    @gc -Console Status Loggerjp 控制台状态记录器
+    @gc - DbMon Samples Collectorjp （DbMon Collectorjp样品收集器
+    @gc -Flexible File Writer 监听器之灵活的文件写入
+    @gc - Graphs Generatorjip 图形发生器
+    @gc - Hits per Second 每秒点击次数
+    @gc -JMXMon Samples Collectorjp （JMXMon样品收集器
+    @gc - Page Data Extractor 页面数据提取器
+    @gc - PerfMon Metrics Collectorjip 性能指标收集器
+    @gc - Response Codes per Secondjip 每秒响应数
+    @gc - Response Latencies Over Timejip 随时间间隔变化的响应延迟
+    @gc - Response Times Distributionjip 响应时间分布图
+    @gc - Response Times Over Timeip 随时间变化的响应时间
+    @gc - Response Times Percentilesjip 响应时间百分位数
+    @gc - Response Times vs Threadsjp 响应时间vs线程
+    @gc - Synthesis Report (filtered) 综合报告（过滤）
+    @gc - Transaction Throughput vs Threadsjip 整个线程的事务
+    @gc - Transactions per Second 每秒事务数
