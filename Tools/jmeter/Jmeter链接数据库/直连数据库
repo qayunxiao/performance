@@ -1,0 +1,19 @@
+直连数据库场景：
+    1、做请求参数化
+    2、作结果断言
+    3、清理垃圾数据
+    4、准备测试数据
+
+ 操作：
+    1、添加驱动MYSQL的jar包
+    2、配置JDBC Connection Configuration
+        设置Variable Name ，Data URL ,Username Password
+    3、添加JDBC request
+        select id,book_name,book_desc from book  ORDER BY RAND() limit 50
+        -- 一个SQL语句 在结果出来之前你能知道这个语句有几条数据吗？
+        --  如果有多条怎么办?
+        --  jmeter -- 变量名_自动增长的数字
+        --  ids_1 ids_2 ids_3 ... ids_xxxx
+    4、查询结果作为http请求入参设置
+      单条数据：id_1
+      多条数据根据数据特征进行拼接：${__V(id_${n})}，n是计数器1开始,根据sql语句的limit设置循环控制器次数即可
