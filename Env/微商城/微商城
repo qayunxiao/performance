@@ -1,0 +1,19 @@
+HOST_IP=$(ifconfig | grep "inet " | head -1 | awk '{ print $2}')
+echo starting $HOST_IP
+java -server -Dfile.encoding=UTF-8 -Dcom.sun.management.jmxremote -Djava.rmi.server.hostname=$HOST_IP -Dcom.sun.management.jmxremote.port=10086 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -jar /home/litermail/litemall-all-0.1.0-exec.jar > /dev/null   2>&1  &
+
+### 3、在本机上配置静态DNS
+（1）在本地pc机，进入目录C:\Windows\System32\drivers\etc
+（2）右键使用notepad打开hosts文件
+（3）配置新的地址映射关系
+192.168.0.12   www.litemall360.com
+~~~
+因为前端打包好的项目是通过www.litemall360.com这个域名访问的，项目部署好之后还要在本地hosts文件中，配置一个映射：
+192.168.0.12 www.litemall360.com
+注意：把前面的ip（192.168.0.12）改成部署的linux服务器的实际IP
+~~~
+### 4、访问项目
+打开浏览器
+（1）在地址栏中输入：http://www.litemall360.com:8082/可以进入微商城的前端商城页面
+（2）在地址栏中输入：http://www.litemall360.com:8081/可以进入微商城的后端管理页面
+用户名和密码都是admin123
