@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="f463940d-9e8b-4ebf-a8c8-24c14aa3045a" activeEnvironment="Default" name="MathUtil" resourceRoot="" soapui-version="5.7.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="2ec4734e-daaf-4d04-89cd-8b5c59f1119a" wsaVersion="NONE" name="MathUtilSoapBinding" type="wsdl" bindingName="{http://sean.com}MathUtilSoapBinding" soapVersion="1_1" anonymous="optional" definition="file:/D:/Downloads/google/MathUtil.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\D:\Downloads\google\MathUtil.wsdl"><con:part><con:url>file:\D:\Downloads\google\MathUtil.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://sean.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://sean.com" xmlns:intf="http://sean.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://sean.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="add">
+        <complexType>
+          <sequence>
+            <element name="x" type="xsd:int"/>
+            <element name="y" type="xsd:int"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="addResponse">
+        <complexType>
+          <sequence>
+            <element name="addReturn" type="xsd:int"/>
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="addResponse">
+    <wsdl:part element="impl:addResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addRequest">
+    <wsdl:part element="impl:add" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MathUtil">
+    <wsdl:operation name="add">
+      <wsdl:input message="impl:addRequest" name="addRequest"></wsdl:input>
+      <wsdl:output message="impl:addResponse" name="addResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MathUtilSoapBinding" type="impl:MathUtil">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="add">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="addRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MathUtilService">
+    <wsdl:port binding="impl:MathUtilSoapBinding" name="MathUtil">
+      <wsdlsoap:address location="http://localhost:18080/webservice_create/services/MathUtil"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://AlvinT14:18088/MyService</con:endpoint><con:endpoint>http://localhost:18080/webservice_create/services/MathUtil</con:endpoint></con:endpoints><con:operation id="2d4e4918-5379-49ac-9fdf-31d4dda7e718" isOneWay="false" action="" name="add" bindingOperationName="add" type="Request-Response" outputName="addResponse" inputName="addRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e93bfaa8-0f9d-4ac2-abc2-eddd3219b381" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://AlvinT14:18088/MyService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sean="http://sean.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <sean:add>\r
+         <sean:x>?</sean:x>\r
+         <sean:y>?</sean:y>\r
+      </sean:add>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://sean.com/MathUtil/addRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService id="14b75c52-260d-429c-b9fd-4e37f88d140b" port="18088" path="/MyService" host="AlvinT14" name="MathUtilSoapBinding MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="add" id="5c404bfd-b3c0-4397-9796-6fc5485e9f8e" interface="MathUtilSoapBinding" operation="add"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="df7b951b-2d82-4b08-9db0-97e822c730da" httpResponseStatus="500" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sean="http://sean.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sean:addResponse>
+         <sean:addReturn>?</sean:addReturn>
+      </sean:addResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://sean.com/MathUtil/addResponse"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
