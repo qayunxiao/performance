@@ -9,7 +9,7 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <stringProp name="TestPlan.user_define_classpath">D:\UserTools\jmeter\lib\jdbc\mysql-connector-java-8.0.30.jar</stringProp>
+      <stringProp name="TestPlan.user_define_classpath">C:\ProgramData\auotest\apache-jmeter-5.5\lib\jdbc\mysql-connector-j-8.0.32.jar</stringProp>
     </TestPlan>
     <hashTree>
       <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="数据库的连接配置" enabled="true">
@@ -31,10 +31,6 @@
         <stringProp name="username">qa</stringProp>
       </JDBCDataSource>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
-        <collectionProp name="Arguments.arguments"/>
-      </Arguments>
-      <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="线程组" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
@@ -49,9 +45,9 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="数据库请求" enabled="true">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request-数据库请求" enabled="true">
           <stringProp name="dataSource">jmeter</stringProp>
-          <stringProp name="query">select id,book_name,book_desc from book  ORDER BY RAND() limit 50
+          <stringProp name="query">select id,book_name,book_desc from book  ORDER BY RAND() limit 10;
 -- 一个SQL语句 在结果出来之前你能知道这个语句有几条数据吗？  
 --  如果有多条怎么办?
 --  jmeter -- 变量名_自动增长的数字
@@ -68,12 +64,12 @@
         <hashTree/>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器-登录10" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
-          <stringProp name="LoopController.loops">10</stringProp>
+          <stringProp name="LoopController.loops">5</stringProp>
         </LoopController>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器-详情页50" enabled="true">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器-详情页q0" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
-          <stringProp name="LoopController.loops">50</stringProp>
+          <stringProp name="LoopController.loops">10</stringProp>
         </LoopController>
         <hashTree>
           <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="计数器" enabled="true">
@@ -128,109 +124,67 @@
               </JSONPathAssertion>
               <hashTree/>
             </hashTree>
+            <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugSampler>
+            <hashTree/>
           </hashTree>
+          <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="Java请求-${__V(ids_${n})}" enabled="true">
+            <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="Sleep_Time" elementType="Argument">
+                  <stringProp name="Argument.name">Sleep_Time</stringProp>
+                  <stringProp name="Argument.value">100</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="Sleep_Mask" elementType="Argument">
+                  <stringProp name="Argument.name">Sleep_Mask</stringProp>
+                  <stringProp name="Argument.value">0xFF</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="Label" elementType="Argument">
+                  <stringProp name="Argument.name">Label</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="ResponseCode" elementType="Argument">
+                  <stringProp name="Argument.name">ResponseCode</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="ResponseMessage" elementType="Argument">
+                  <stringProp name="Argument.name">ResponseMessage</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="Status" elementType="Argument">
+                  <stringProp name="Argument.name">Status</stringProp>
+                  <stringProp name="Argument.value">OK</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="SamplerData" elementType="Argument">
+                  <stringProp name="Argument.name">SamplerData</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="ResultData" elementType="Argument">
+                  <stringProp name="Argument.name">ResultData</stringProp>
+                  <stringProp name="Argument.value">${__V(ids_${n})}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="classname">org.apache.jmeter.protocol.java.test.JavaTest</stringProp>
+          </JavaSampler>
+          <hashTree/>
         </hashTree>
-        <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="Java请求-${__V(ids_${n})}" enabled="false">
-          <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="Sleep_Time" elementType="Argument">
-                <stringProp name="Argument.name">Sleep_Time</stringProp>
-                <stringProp name="Argument.value">100</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="Sleep_Mask" elementType="Argument">
-                <stringProp name="Argument.name">Sleep_Mask</stringProp>
-                <stringProp name="Argument.value">0xFF</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="Label" elementType="Argument">
-                <stringProp name="Argument.name">Label</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ResponseCode" elementType="Argument">
-                <stringProp name="Argument.name">ResponseCode</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ResponseMessage" elementType="Argument">
-                <stringProp name="Argument.name">ResponseMessage</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="Status" elementType="Argument">
-                <stringProp name="Argument.name">Status</stringProp>
-                <stringProp name="Argument.value">OK</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="SamplerData" elementType="Argument">
-                <stringProp name="Argument.name">SamplerData</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ResultData" elementType="Argument">
-                <stringProp name="Argument.name">ResultData</stringProp>
-                <stringProp name="Argument.value">${__V(ids_${n})}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <stringProp name="classname">org.apache.jmeter.protocol.java.test.JavaTest</stringProp>
-        </JavaSampler>
-        <hashTree/>
-        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器" enabled="false">
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器" enabled="true">
           <boolProp name="displayJMeterProperties">false</boolProp>
           <boolProp name="displayJMeterVariables">true</boolProp>
           <boolProp name="displaySystemProperties">false</boolProp>
         </DebugSampler>
-        <hashTree/>
-        <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="Java请求-函数助手" enabled="false">
-          <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="Sleep_Time" elementType="Argument">
-                <stringProp name="Argument.name">Sleep_Time</stringProp>
-                <stringProp name="Argument.value">100</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="Sleep_Mask" elementType="Argument">
-                <stringProp name="Argument.name">Sleep_Mask</stringProp>
-                <stringProp name="Argument.value">0xFF</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="Label" elementType="Argument">
-                <stringProp name="Argument.name">Label</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ResponseCode" elementType="Argument">
-                <stringProp name="Argument.name">ResponseCode</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ResponseMessage" elementType="Argument">
-                <stringProp name="Argument.name">ResponseMessage</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="Status" elementType="Argument">
-                <stringProp name="Argument.name">Status</stringProp>
-                <stringProp name="Argument.value">OK</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="SamplerData" elementType="Argument">
-                <stringProp name="Argument.name">SamplerData</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ResultData" elementType="Argument">
-                <stringProp name="Argument.name">ResultData</stringProp>
-                <stringProp name="Argument.value">${__Random(1,1000,t)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <stringProp name="classname">org.apache.jmeter.protocol.java.test.JavaTest</stringProp>
-        </JavaSampler>
         <hashTree/>
         <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="Java请求-函数助手${t}" enabled="false">
           <stringProp name="TestPlan.comments">${__time(ddHHmmsss.)}</stringProp>

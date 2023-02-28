@@ -1,0 +1,49 @@
+Applications Memory Usage (in Kilobytes):
+Uptime: 2381569 Realtime: 2381569
+
+** MEMINFO in pid 2235 [com.lemon.lemonban] **
+                   Pss  Private  Private  SwapPss     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------
+  Native Heap    26753    26692        0        0    38656    32966     5689
+  Dalvik Heap     7043     6956        0        0    11014     6609     4405
+ Dalvik Other     2765     2764        0        0                           
+        Stack      880      880        0        0                           
+       Ashmem     2604     2440        0        0                           
+    Other dev        6        0        4        0                           
+     .so mmap     3032      148      880        0                           
+    .apk mmap    65842     7796    57996        0                           
+    .ttf mmap     1220        0      488        0                           
+    .dex mmap     4964        4     4960        0                           
+    .oat mmap     5486        0     2208        0                           
+    .art mmap     2745     1732      404        0                           
+   Other mmap     9601        4     6388        0                           
+      Unknown    26427    26424        0        0                           
+        TOTAL   159368    75840    73328        0    49670    39575    10094
+ 
+ App Summary
+                       Pss(KB)
+                        ------
+           Java Heap:     9092
+         Native Heap:    26692
+                Code:    74480
+               Stack:      880
+            Graphics:        0
+       Private Other:    38024
+              System:    10200
+ 
+               TOTAL:   159368       TOTAL SWAP PSS:        0
+ 
+ Objects
+               Views:      170         ViewRootImpl:        2
+         AppContexts:        4           Activities:        2
+              Assets:        3        AssetManagers:        3
+       Local Binders:       46        Proxy Binders:       28
+       Parcel memory:        7         Parcel count:       29
+    Death Recipients:        1      OpenSSL Sockets:        0
+            WebViews:        1
+ 
+ SQL
+         MEMORY_USED:        0
+  PAGECACHE_OVERFLOW:        0          MALLOC_SIZE:        0
+ 

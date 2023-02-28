@@ -153,6 +153,8 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
+      <Summariser guiclass="SummariserGui" testclass="Summariser" testname="生成概要结果" enabled="true"/>
+      <hashTree/>
     </hashTree>
   </hashTree>
 </jmeterTestPlan>

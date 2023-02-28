@@ -1,0 +1,31 @@
+上文的思路明显的。
+
+top命令 查看服务器负载,发现 mysql竟然百分之两百的cpu,引起Mysql 负载这么高的原因,估计是索引问题和某些变态SQL语句.
+
+排查思路
+1. 确定高负载的类型,top命令看负载高是CPU还是IO。
+2. mysql 下执行查看当前的连接数与执行的sql 语句。
+3. 检查慢查询日志，可能是慢查询引起负载高。
+4. 检查硬件问题，是否磁盘故障问题造成的。
+5. 检查监控平台，对比此机器不同时间的负载。
+~~~~~~~~~~~~~~~~~
+
+记录慢查询 编辑Mysql 配置文件(my.cnf),在[mysqld]字段添加以下几行:
+log_slow_queries = /usr/local/mysql/var/slow_queries.log   #慢查询日志路径
+long_query_time = 10                                       #记录SQL查询超过10s的语句
+log-queries-not-using-indexes = 1                          #记录没有使用索引的sql
+查看慢查询日志
+tail /usr/local/mysql/var/slow_queries.log
+# Time: 130305  9:48:13
+# User@Host: biotherm[biotherm] @  [8.8.8.45]
+# Query_time: 1294.881407  Lock_time: 0.000179 Rows_sent: 4  Rows_examined: 1318033
+SET timestamp=1363916893;
+SELECT * FROM xxx_list WHERE tid = '11xx'  AND del = 0  ORDER BY  id DESC  LIMIT 0, 4;
+4个参数 Query_time: 0 Lock_time: 0 Rows_sent: 1 Rows_examined: 54 分别意思为:查询时间 锁定时间 查询结果行数 扫描行数,主要看扫描行数多的语句,然后去数据库加上对应的索引,再优化下变态的sql 语句。
+极端情况kill sql进程
+找出占用cpu时间过长的sql，在mysql 下执行如下命令：
+show processlist;
+确定后一条sql处于Query状态，且Time时间过长，锁定它的ID，执行如下命令：
+kill QUERY  269815764;
+注意：杀死 sql进程，可能导致数据丢失，所以执行前要衡量数据的重要性。
+
